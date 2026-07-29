@@ -38,4 +38,8 @@ Made using AutoHotKey and compiled using AHK2Exe.
 
 ## Downloads
 #### Check the [releases](https://github.com/r00t-tsai/Filter-Studio/releases).
+
+---
+## References
 [AutoHotkey v2](https://www.autohotkey.com/)
+[AHK2Exe](https://github.com/AutoHotkey/Ahk2Exe)
