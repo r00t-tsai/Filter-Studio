@@ -20,7 +20,7 @@
 ---
 
 ### Overview
-A background-friendly Windows application designed to reduce eye strain, adjust monitor hardware brightness, and apply custom color filters across single or multi-monitor setups. It operates efficiently using native Windows APIs without heavy system overhead.
+A background-friendly Windows application designed to reduce eye strain, adjust monitor hardware brightness, and apply custom 12 color filters across single or multi-monitor setups. It operates efficiently using native Windows APIs without heavy system overhead.
 
 Made using AutoHotKey and compiled using AHK2Exe.
 
@@ -28,7 +28,7 @@ Made using AutoHotKey and compiled using AHK2Exe.
 
 ### Workflow
 
-1. Select a quick preset or adjust your brightness, color, and strength sliders manually[cite: 1].
+1. Select a quick preset or adjust your brightness, color, and strength sliders manually.
 2. Optionally enable **Automatic Switching** and set custom execution times.
 3. Close the window to minimize the app directly to the system tray.
 4. Press `Ctrl` + `Shift` + `F` at any time to toggle the interface.
