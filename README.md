@@ -22,6 +22,8 @@
 ### Overview
 A background-friendly Windows application designed to reduce eye strain, adjust monitor hardware brightness, and apply custom color filters across single or multi-monitor setups. It operates efficiently using native Windows APIs without heavy system overhead.
 
+Made using AutoHotKey and compiled using AHK2Exe.
+
 ---
 
 ### Workflow
