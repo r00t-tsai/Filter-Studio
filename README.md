@@ -4,7 +4,7 @@
 
 # <p align="center">Filter Studio </p>
 
-### <p align="center">*A lightweight utility that manages screen brightness and color filters.* </p>
+### <p align="center">*A lightweight tool that manages screen brightness and color filters.* </p>
 
 <p align="center">
   <a href="https://github.com/r00t-tsai/Filter-Studio/releases/latest">
