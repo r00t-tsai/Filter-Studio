@@ -1,3 +1,4 @@
+; This script is outdated. It may contain features that are not in the application.
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 global SettingsFile := A_ScriptDir . "\FilterStudio.ini"
