@@ -6,6 +6,12 @@
 
 ### <p align="center">*A free lightweight tool that manages screen brightness and color filters.* </p>
 
+<p align="center">
+  <a href="https://github.com/r00t-tsai/Filter-Studio/releases/latest">
+    <img src="https://img.shields.io/badge/DOWNLOAD-2ea44f?style=for-the-badge" alt="Download">
+  </a>
+</p>
+
 ---
 <div align="center">
   <img src="https://github.com/user-attachments/assets/9d453837-8e7d-4c5e-bf6c-666b826df1ad" width="800" alt="Demonstration" />
