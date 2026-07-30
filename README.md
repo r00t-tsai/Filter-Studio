@@ -58,7 +58,7 @@ Filter Studio is released as **Freeware**.
 
 * You are free to download, use, and share the compiled `.exe` executable for personal or commercial use.
 * Source code for **v1.0** remains accessible in my other repository and commit history as open reference.
-* **v1.1+** binaries are closed-source freeware. See the [LICENSE](LICENSE) file for full terms.
+* **v1.1+** binaries are closed-source freeware. See the [LICENSE](LICENSE.md) file for full terms.
 
 ---
 ## References
