@@ -33,7 +33,7 @@ Made using AutoHotKey and compiled using AHK2Exe.
 1. Includes a screen-time tracker and general recommendations based on performance and metrics.
 2. Additional automated ergonomics and health reminders such as live user monitoring.
 3. AC/DC automated power detection and preset switching.
-4. Live monitoring and screen tracking only takes up 4mb of memory at most and will not scrape any personal information/data.
+4. Live monitoring and screen tracking only takes up 5 mb of memory at most and will not scrape any personal information/data.
 
 ---
 
