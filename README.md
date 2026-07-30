@@ -4,7 +4,7 @@
 
 # <p align="center">Filter Studio </p>
 
-### <p align="center">*A lightweight tool that manages screen brightness and color filters.* </p>
+### <p align="center">*A free lightweight tool that manages screen brightness and color filters.* </p>
 
 ---
 <div align="center">
@@ -56,7 +56,7 @@ Made using AutoHotKey and compiled using AHK2Exe.
 
 Filter Studio is released as **Freeware**. 
 
-* You are free to download, use, and share the compiled `.exe` executable for personal or commercial use.
+* You are free to download, use, and share the compiled `.exe` executable for personal use.
 * Source code for **v1.0** remains accessible in my other repository and commit history as open reference.
 * **v1.1+** binaries are closed-source freeware. See the [LICENSE](LICENSE.md) file for full terms.
 
