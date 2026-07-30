@@ -26,8 +26,14 @@ Made using AutoHotKey and compiled using AHK2Exe.
 2. A slider (0–100%) that adjusts how strongly the color filter tints your screen by modifying system GDI Gamma Ramps.
 3. Directly adjusts physical monitor brightness (10–100%) using WMI (for laptops) and DDC/CI for external monitors.
 4. Multi-monitor is supported for gamma ramps and dimming.
-5. An automated time scheduler.
+5. Automated scheduling for different presets in specified hours.
 6. Highly customizable and intentionally supports Quality-Of-Life day-to-day operations.
+
+#### VERSION 1.1 Additional Features
+1. Includes a screen-time tracker and general recommendations based on performance and metrics.
+2. Additional automated ergonomics and health reminders such as live user monitoring.
+3. AC/DC automated power detection and preset switching.
+4. Live monitoring and screen tracking only takes up 4mb of memory at most and will not scrape any personal information/data.
 
 ---
 
@@ -38,6 +44,7 @@ Made using AutoHotKey and compiled using AHK2Exe.
 3. Close the window to minimize the app directly to the system tray.
 4. Press `Ctrl` + `Shift` + `F` at any time to toggle the interface.
 5. Alternatively, you can check the app minimized in your hidden icons.
+6. You can access the metrics of screen-time through the screen-statistics menu.
 
 ---
 
