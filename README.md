@@ -52,6 +52,15 @@ Made using AutoHotKey and compiled using AHK2Exe.
 #### Check the [releases](https://github.com/r00t-tsai/Filter-Studio/releases).
 
 ---
+## License & Distribution
+
+Filter Studio is released as **Freeware**. 
+
+* You are free to download, use, and share the compiled `.exe` executable for personal or commercial use.
+* Source code for **v1.0** remains accessible in my other repository and commit history as open reference.
+* **v1.1+** binaries are closed-source freeware. See the [LICENSE](LICENSE) file for full terms.
+
+---
 ## References
 [AutoHotkey v2](https://www.autohotkey.com/)
 [AHK2Exe](https://github.com/AutoHotkey/Ahk2Exe)
