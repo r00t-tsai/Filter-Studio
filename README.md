@@ -50,7 +50,12 @@ Made using AutoHotKey and compiled using AHK2Exe.
 4. Live monitoring and screen tracking only takes up 5 mb of memory at most and will not scrape any personal information/data.
 
 ---
+### Known incompatibilities:
+1. DisplayPort, HDMI adapters, and older monitors that do not have DDC/CI commands will fail to respond to brightness changes.
+2. Monitors, virtual displays, or graphics drivers that do not support hardware gamma ramps will disable color filtering.
+3. Running Filter Studio alongside other gamma or color management tools (such as f.lux, Windows Night Light, Duet Display, or GPU control panel color overrides) will cause conflict. They will constantly overwrite each other’s gamma ramps, leading to screen flickering or incorrect colors.
 
+---
 ### Workflow
 
 1. Select a quick preset or adjust your brightness, color, and strength sliders manually.
