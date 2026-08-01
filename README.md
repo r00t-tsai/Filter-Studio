@@ -12,9 +12,10 @@
   </a>
 </p>
 
+
 ---
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/9d453837-8e7d-4c5e-bf6c-666b826df1ad" width="800" alt="Demonstration" />
+  <img src="https://github.com/user-attachments/assets/2f93d95b-48ce-457e-9ec9-8b4053338221" width="800" alt="Demonstration" />
 </div>
 
 ---
