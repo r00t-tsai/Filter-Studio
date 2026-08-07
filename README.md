@@ -1,10 +1,11 @@
 <div align="center">
-  <img width="312" height="312" alt="record-button" src="https://github.com/user-attachments/assets/6efc45b2-5330-45fb-850c-c7b699ac13f1" />
+  <img width="312" height="280" alt="record-button" src="https://github.com/user-attachments/assets/5f44e0fd-ab5b-40f4-925e-9b555dd7fc03" />
 </div>
 
 # <p align="center">Filter Studio </p>
 
 ### <p align="center">*A free lightweight tool that manages screen brightness and color filters.* </p>
+
 
 <p align="center">
   <a href="https://github.com/r00t-tsai/Filter-Studio/releases/latest">
