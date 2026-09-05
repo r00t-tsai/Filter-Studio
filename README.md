@@ -4,7 +4,7 @@
 
 # <p align="center">Filter Studio </p>
 
-### <p align="center">*A free lightweight tool that manages screen brightness and color filters.* </p>
+### <p align="center">*A lightweight tool that manages screen brightness and color filters.* </p>
 
 
 <p align="center">
