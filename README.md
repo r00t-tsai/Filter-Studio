@@ -44,11 +44,18 @@ Made using AutoHotKey and compiled using AHK2Exe.
 5. Automated scheduling for different presets in specified hours.
 6. Highly customizable and intentionally supports Quality-Of-Life day-to-day operations.
 
-#### VERSION 1.1 Additional Features
+#### VERSION 1.1 Additional Features & Improvements
 1. Includes a screen-time tracker and general recommendations based on performance and metrics.
 2. Additional automated ergonomics and health reminders such as live user monitoring.
 3. AC/DC automated power detection and preset switching.
 4. Live monitoring and screen tracking only takes up 5 mb of memory at most and will not scrape any personal information/data.
+
+#### VERSION 1.2 Additional Features & Improvements
+1. Reworked UI for both the Main Menu and the Screentime Tracker.
+2. App monitors screen updates now. If toggling Windows HDR or a graphics driver update suddenly blocks the color filter, prompt user.
+3. Location-based (Geolocation) scheduling is added.
+4. Added in-app update checking against GitHub releases.
+5. Extended tracking functions are added for a more comprehensive interpretation and recommendations.
 
 ---
 ### Known incompatibilities:
