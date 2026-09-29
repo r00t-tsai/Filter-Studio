@@ -323,6 +323,75 @@
             color: var(--text-muted);
         }
 
+
+        .release-section {
+            margin: 60px 0;
+        }
+
+        .release-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .release-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .release-version {
+            color: var(--text-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .release-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .release-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--accent-blue-light);
+            color: var(--accent-blue-hover);
+            border: 1px solid var(--accent-blue-border);
+            border-radius: 999px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        .release-card ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-body);
+        }
+
+        .release-card li {
+            margin-bottom: 8px;
+        }
+
+        .release-card li:last-child {
+            margin-bottom: 0;
+        }
+
+        .release-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 18px;
+            font-weight: 600;
+        }
+
         .section-title {
             text-align: center;
             font-size: 1.8rem;
@@ -363,6 +432,8 @@
             .hero h1 { font-size: 2rem; }
             .cta-group { flex-direction: column; }
             .nav-links { display: none; }
+            .release-header { flex-direction: column; align-items: flex-start; }
+            .release-date { white-space: normal; }
         }
     </style>
 </head>
@@ -375,6 +446,7 @@
         <ul class="nav-links">
             <li><a href="#features">Features</a></li>
             <li><a href="#shortcuts">Shortcuts</a></li>
+            <li><a href="#releases">Releases</a></li>
             <li>
                 <a href="https://github.com/r00t-tsai/Filter-Studio" target="_blank" class="github-btn">
                     <i class="fa-brands fa-github"></i> GitHub
@@ -393,9 +465,9 @@
 
             <div class="cta-group">
 
-                <a id="download-btn" href="https://github.com/r00t-tsai/Filter-Studio/releases/tag/v1.1" class="btn-download">
+                <a id="download-btn" href="https://github.com/r00t-tsai/Filter-Studio/releases/tag/v1.2.0" class="btn-download">
                     <i class="fa-solid fa-download"></i> 
-                    <span id="btn-version-text">Download Filter Studio (v1.1)</span>
+                    <span id="btn-version-text">Download Filter Studio (v1.2.0)</span>
                 </a>
                 <a href="https://github.com/r00t-tsai/Filter-Studio" target="_blank" class="btn-secondary">
                     <i class="fa-brands fa-github"></i> View Repository
@@ -447,25 +519,25 @@
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
                     <h3>Screen Time Tracker</h3>
-                    <p>Monitors hourly, daily, and monthly active computer usage to help build awareness and track healthier screen habits.</p>
+                    <p>Tracks real active computer usage using idle-input detection, keeps hourly/daily/monthly history, and stores statistics for personalized usage recommendations.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-clock"></i></div>
                     <h3>Automated Scheduling</h3>
-                    <p>Automatically adjust screen warmth and brightness levels according to customizable daily schedule checkpoints.</p>
+                    <p>Supports fixed schedules and location-based day/night scheduling, with automatic preset switching and customizable checkpoints.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-laptop-code"></i></div>
                     <h3>Hardware Auto-Detection</h3>
-                    <p>Seamlessly controls laptop screen brightness via WMI and external monitors via DDC/CI commands, including AC/Battery switching.</p>
+                    <p>Controls laptop brightness through WMI and external monitors through DDC/CI, with AC/Battery preset switching and state restoration.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-heart-pulse"></i></div>
                     <h3>Smart Eye Rest Alerts</h3>
-                    <p>Integrates 20-20-20 eye rests, posture resets, and hydration reminders triggered only when active input is detected.</p>
+                    <p>Provides 20-20-20 eye rests, posture resets, hydration reminders, and other habit prompts while active computer use is detected.</p>
                 </div>
 
                 <div class="feature-card">
@@ -473,6 +545,95 @@
                     <h3>Lightweight & Native</h3>
                     <p>Built completely in AutoHotkey v2 for minimal memory consumption, starting quietly in your Windows system tray.</p>
                 </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <h3>Location-Based Scheduling</h3>
+                    <p>Use your location and local day/night state to switch between presets automatically, including midnight rollover handling.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-sliders"></i></div>
+                    <h3>Custom Preset Editor</h3>
+                    <p>Edit custom presets with a dedicated menu and dropdown, with Save, Discard, and Cancel prompts for unsaved changes.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Safe Settings Validation</h3>
+                    <p>Validates settings and preset data when loading so an edited or corrupted configuration can fall back to safe defaults instead of breaking startup.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <h3>Built-In Update Checker</h3>
+                    <p>Checks GitHub releases from inside the application and prompts you when a newer Filter Studio version is available.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-display"></i></div>
+                    <h3>Display Change Detection</h3>
+                    <p>Monitors screen updates and can notify you when Windows HDR or a graphics-driver update prevents the color filter from applying correctly.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="releases" class="release-section">
+            <h2 class="section-title">Release Highlights</h2>
+
+            <div class="release-card">
+                <div class="release-header">
+                    <div>
+                        <span class="release-version">v1.2.0</span>
+                        <span class="release-tag"><i class="fa-solid fa-star"></i> Latest</span>
+                    </div>
+                    <span class="release-date">September 10, 2026</span>
+                </div>
+                <ul>
+                    <li>Reworked the Main Menu and Screentime Tracker UI.</li>
+                    <li>Added an explicit scheduling mode selector: Off, Fixed Scheduling, or Location-Based.</li>
+                    <li>Added location-based (geolocation) scheduling with day/night cycle handling.</li>
+                    <li>Added an in-app update checker that checks GitHub releases for newer versions.</li>
+                    <li>Improved charger-preset snapshot and restore behavior, including manual override values.</li>
+                    <li>Improved Custom preset editing with a menu, dropdown, and Save / Discard / Cancel confirmation.</li>
+                    <li>Added validation for edited or corrupted configuration files, with safe-default fallback behavior.</li>
+                    <li>Improved midnight scheduling edge cases to prevent duplicate day/night triggers.</li>
+                    <li>Added display-change monitoring for Windows HDR and graphics-driver changes that can block the color filter.</li>
+                </ul>
+                <a class="release-link" href="https://github.com/r00t-tsai/Filter-Studio/releases/tag/v1.2.0" target="_blank">
+                    View v1.2.0 release notes <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="release-card">
+                <div class="release-header">
+                    <span class="release-version">v1.1.2</span>
+                    <span class="release-date">August 7, 2026</span>
+                </div>
+                <ul>
+                    <li>Fixed minor Scheduling GUI overlap issues.</li>
+                    <li>Added Dark Mode in Settings.</li>
+                    <li>Added function tests for gamma edits and supported hardware brightness methods.</li>
+                    <li>Added display-change monitoring for Windows HDR and graphics-driver updates.</li>
+                </ul>
+                <a class="release-link" href="https://github.com/r00t-tsai/Filter-Studio/releases/tag/v1.1.2" target="_blank">
+                    View v1.1.2 release notes <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="release-card">
+                <div class="release-header">
+                    <span class="release-version">v1.1.1</span>
+                    <span class="release-date">August 1, 2026</span>
+                </div>
+                <ul>
+                    <li>Added automatic preset scheduling by default, switching to night light at 8 PM and off at 7 AM.</li>
+                    <li>Added editable custom schedule times and preset selection when Automatic Switching is disabled.</li>
+                </ul>
+                <a class="release-link" href="https://github.com/r00t-tsai/Filter-Studio/releases/tag/v1.1.1" target="_blank">
+                    View v1.1.1 release notes <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
             </div>
         </section>
 
@@ -492,7 +653,7 @@
     <script>
         async function fetchLatestRelease() {
             const repo = "r00t-tsai/Filter-Studio";
-            const fallbackVersion = "v1.1";
+            const fallbackVersion = "v1.2.0";
             const fallbackUrl = `https://github.com/${repo}/releases/tag/${fallbackVersion}`;
 
             const downloadBtn = document.getElementById("download-btn");
@@ -506,8 +667,13 @@
                 const version = data.tag_name || fallbackVersion;
 
                 btnText.textContent = `Download Filter Studio (${version})`;
-                if (data.assets && data.assets.length > 0) {
-                    downloadBtn.href = data.assets[0].browser_download_url;
+
+                const zipAsset = Array.isArray(data.assets)
+                    ? data.assets.find(asset => /\.zip$/i.test(asset.name || ""))
+                    : null;
+
+                if (zipAsset?.browser_download_url) {
+                    downloadBtn.href = zipAsset.browser_download_url;
                 } else {
                     downloadBtn.href = data.html_url || fallbackUrl;
                 }
