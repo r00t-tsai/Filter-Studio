@@ -64,19 +64,12 @@ Made using AutoHotKey and compiled using AHK2Exe.
 3. Running Filter Studio alongside other gamma or color management tools (such as f.lux, Windows Night Light, Duet Display, or GPU control panel color overrides) will cause conflict. They will constantly overwrite each other’s gamma ramps, leading to screen flickering or incorrect colors.
 
 ---
-### Workflow
-
-1. Select a quick preset or adjust your brightness, color, and strength sliders manually.
-2. You can set the preferred time when to apply the filters and the app will apply it automatically.
-3. Close the window to minimize the app directly to the system tray.
-4. Press `Ctrl` + `Shift` + `F` at any time to toggle the interface.
-5. Alternatively, you can check the app minimized in your hidden icons.
-6. You can access the metrics of screen-time through the screen-statistics menu.
-
----
 
 ## Downloads
 #### Check the [releases](https://github.com/r00t-tsai/Filter-Studio/releases).
+
+> [!WARNING]
+> If you found this application from another source other than this repository and the Documentation page, please do not download it there. I have not hosted any separate websites/documentation pages other than this repository.
 
 ---
 ## License & Distribution
