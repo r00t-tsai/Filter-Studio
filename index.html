@@ -34,6 +34,7 @@
             font-family: var(--font-family);
             line-height: 1.6;
             padding-bottom: 60px;
+            transition: background-color 100ms linear;
         }
 
         a {
@@ -236,14 +237,22 @@
         }
 
         .preset-btn {
+            appearance: none;
             background-color: var(--bg-main);
             border: 1px solid var(--border-subtle);
             color: var(--text-heading);
             padding: 10px;
             border-radius: 8px;
+            font: inherit;
             font-size: 0.85rem;
             text-align: center;
             font-weight: 500;
+            cursor: pointer;
+            transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+        }
+
+        .preset-btn:hover {
+            border-color: var(--accent-blue);
         }
 
         .preset-btn.active {
@@ -254,29 +263,118 @@
         }
 
         .slider-group {
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
 
         .slider-label {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            gap: 12px;
             font-size: 0.85rem;
-            margin-bottom: 6px;
+            margin-bottom: 7px;
             color: var(--text-heading);
         }
 
-        .slider-bar {
-            width: 100%;
-            height: 8px;
-            background-color: var(--border-subtle);
-            border-radius: 4px;
-            overflow: hidden;
+        .slider-label output {
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            color: var(--accent-blue-hover);
         }
 
-        .slider-fill {
-            height: 100%;
-            background-color: var(--accent-blue);
-            border-radius: 4px;
+        .range-slider {
+            display: block;
+            width: 100%;
+            height: 22px;
+            margin: 0;
+            accent-color: var(--accent-blue-hover);
+            cursor: pointer;
+            touch-action: pan-y;
+        }
+
+        .range-slider:focus-visible,
+        .color-select:focus-visible,
+        .preset-btn:focus-visible,
+        .color-chip:focus-visible {
+            outline: 2px solid var(--accent-blue-hover);
+            outline-offset: 3px;
+        }
+
+        .filter-color-section {
+            margin-top: 4px;
+        }
+
+        .control-label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--text-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .color-select {
+            display: block;
+            width: 100%;
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 10px 12px;
+            background: #fff;
+            color: var(--text-heading);
+            font: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .color-presets {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .color-chip {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            padding: 7px 2px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.65rem;
+            cursor: pointer;
+        }
+
+        .color-chip:hover,
+        .color-chip.active {
+            border-color: var(--accent-blue-border);
+            background: var(--accent-blue-light);
+            color: var(--text-heading);
+        }
+
+        .color-dot {
+            display: block;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--swatch);
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+        }
+
+        .preview-status {
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        .preview-status strong {
+            color: var(--text-heading);
         }
 
         .features {
@@ -434,6 +532,8 @@
             .nav-links { display: none; }
             .release-header { flex-direction: column; align-items: flex-start; }
             .release-date { white-space: normal; }
+            .color-presets { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .preview-body { padding: 20px; }
         }
     </style>
 </head>
@@ -481,28 +581,63 @@
                 </div>
                 <div class="preview-body">
                     <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-heading); text-transform: uppercase; margin-bottom: 8px;">Quick Presets</div>
-                    <div class="preset-grid">
-                        <div class="preset-btn active">Health</div>
-                        <div class="preset-btn">Reading</div>
-                        <div class="preset-btn">Gaming</div>
-                        <div class="preset-btn">Movie</div>
+                    <div class="preset-grid" role="group" aria-label="Quick filter presets">
+                        <button type="button" class="preset-btn active" data-preset="Health" aria-pressed="true">Health</button>
+                        <button type="button" class="preset-btn" data-preset="Reading" aria-pressed="false">Reading</button>
+                        <button type="button" class="preset-btn" data-preset="Gaming" aria-pressed="false">Gaming</button>
+                        <button type="button" class="preset-btn" data-preset="Movie" aria-pressed="false">Movie</button>
                     </div>
 
                     <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-heading); text-transform: uppercase; margin-bottom: 8px;">Adjustments</div>
                     <div class="slider-group">
                         <div class="slider-label">
-                            <span>Screen Brightness</span>
-                            <span>85%</span>
+                            <label for="brightnessSlider">Screen Brightness</label>
+                            <output id="brightnessValue" for="brightnessSlider">100%</output>
                         </div>
-                        <div class="slider-bar"><div class="slider-fill" style="width: 85%;"></div></div>
+                        <input class="range-slider" id="brightnessSlider" type="range" min="0" max="100" step="1" value="100" aria-label="Screen brightness">
                     </div>
                     <div class="slider-group">
                         <div class="slider-label">
-                            <span>Filter Strength</span>
-                            <span>55%</span>
+                            <label for="strengthSlider">Filter Strength</label>
+                            <output id="strengthValue" for="strengthSlider">55%</output>
                         </div>
-                        <div class="slider-bar"><div class="slider-fill" style="width: 55%;"></div></div>
+                        <input class="range-slider" id="strengthSlider" type="range" min="0" max="100" step="1" value="40" aria-label="Filter strength">
                     </div>
+
+                    <div class="filter-color-section">
+                        <label class="control-label" for="colorFilter">Filter Color</label>
+                        <select class="color-select" id="colorFilter">
+                            <option value="Amber">Amber</option>
+                            <option value="Vermilion">Vermilion</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Sky Blue" selected>Sky Blue</option>
+                            <option value="Yellow">Yellow</option>
+                            <option value="Lime">Lime</option>
+                            <option value="Green">Green</option>
+                            <option value="Cyan">Cyan</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Indigo">Indigo</option>
+                            <option value="Violet">Violet</option>
+                            <option value="Rose">Rose</option>
+                            <option value="Red">Red</option>
+                        </select>
+                        <div class="color-presets" id="colorPresets" role="group" aria-label="Color filter presets">
+                            <button type="button" class="color-chip" data-color="Amber" title="Amber" aria-label="Use Amber filter"><span class="color-dot" style="--swatch:#ffbf00"></span><span>Amber</span></button>
+                            <button type="button" class="color-chip" data-color="Vermilion" title="Vermilion" aria-label="Use Vermilion filter"><span class="color-dot" style="--swatch:#e34234"></span><span>Vermilion</span></button>
+                            <button type="button" class="color-chip" data-color="Orange" title="Orange" aria-label="Use Orange filter"><span class="color-dot" style="--swatch:#ff8c00"></span><span>Orange</span></button>
+                            <button type="button" class="color-chip active" data-color="Sky Blue" title="Sky Blue" aria-label="Use Sky Blue filter"><span class="color-dot" style="--swatch:#87ceeb"></span><span>Sky Blue</span></button>
+                            <button type="button" class="color-chip" data-color="Yellow" title="Yellow" aria-label="Use Yellow filter"><span class="color-dot" style="--swatch:#f4d35e"></span><span>Yellow</span></button>
+                            <button type="button" class="color-chip" data-color="Lime" title="Lime" aria-label="Use Lime filter"><span class="color-dot" style="--swatch:#b5cc39"></span><span>Lime</span></button>
+                            <button type="button" class="color-chip" data-color="Green" title="Green" aria-label="Use Green filter"><span class="color-dot" style="--swatch:#45a66b"></span><span>Green</span></button>
+                            <button type="button" class="color-chip" data-color="Cyan" title="Cyan" aria-label="Use Cyan filter"><span class="color-dot" style="--swatch:#37b6c7"></span><span>Cyan</span></button>
+                            <button type="button" class="color-chip" data-color="Blue" title="Blue" aria-label="Use Blue filter"><span class="color-dot" style="--swatch:#3478d4"></span><span>Blue</span></button>
+                            <button type="button" class="color-chip" data-color="Indigo" title="Indigo" aria-label="Use Indigo filter"><span class="color-dot" style="--swatch:#5557bb"></span><span>Indigo</span></button>
+                            <button type="button" class="color-chip" data-color="Violet" title="Violet" aria-label="Use Violet filter"><span class="color-dot" style="--swatch:#9254c8"></span><span>Violet</span></button>
+                            <button type="button" class="color-chip" data-color="Rose" title="Rose" aria-label="Use Rose filter"><span class="color-dot" style="--swatch:#d86b8a"></span><span>Rose</span></button>
+                            <button type="button" class="color-chip" data-color="Red" title="Red" aria-label="Use Red filter"><span class="color-dot" style="--swatch:#d93636"></span><span>Red</span></button>
+                        </div>
+                    </div>
+                    <p class="preview-status" id="filterStatus" aria-live="polite">Live page tint: <strong>100% brightness</strong>, 40% filter strength, Sky Blue filter.</p>
                 </div>
             </div>
         </section>
@@ -513,7 +648,7 @@
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
                     <h3>Custom Color Filters</h3>
-                    <p>Select from 12 spectrum tones (Amber, Vermilion, Orange, Blue) with precise opacity controls to eliminate strain and harsh light.</p>
+                    <p>Select from 13 spectrum tones, including Sky Blue, Amber, Vermilion, and Orange, with precise opacity controls to soften harsh light.</p>
                 </div>
 
                 <div class="feature-card">
@@ -651,6 +786,123 @@
     </div>
 
     <script>
+        // Interactive Filter Studio preview. Brightness controls the page background
+        // from its normal light tone down to black; strength blends in the selected hue.
+        const brightnessSlider = document.getElementById("brightnessSlider");
+        const strengthSlider = document.getElementById("strengthSlider");
+        const brightnessValue = document.getElementById("brightnessValue");
+        const strengthValue = document.getElementById("strengthValue");
+        const colorFilter = document.getElementById("colorFilter");
+        const filterStatus = document.getElementById("filterStatus");
+        const presetButtons = [...document.querySelectorAll("[data-preset]")];
+        const colorButtons = [...document.querySelectorAll("[data-color]")];
+
+        const filterColors = {
+            Amber: "#ffbf00",
+            Vermilion: "#e34234",
+            Orange: "#ff8c00",
+            "Sky Blue": "#87ceeb",
+            Yellow: "#f4d35e",
+            Lime: "#b5cc39",
+            Green: "#45a66b",
+            Cyan: "#37b6c7",
+            Blue: "#3478d4",
+            Indigo: "#5557bb",
+            Violet: "#9254c8",
+            Rose: "#d86b8a",
+            Red: "#d93636"
+        };
+
+        const quickPresets = {
+            Health:  { brightness: 85, strength: 55, color: "Sky Blue" },
+            Reading: { brightness: 78, strength: 48, color: "Amber" },
+            Gaming:  { brightness: 100, strength: 24, color: "Blue" },
+            Movie:   { brightness: 62, strength: 72, color: "Vermilion" }
+        };
+
+        function hexToRgb(hex) {
+            const clean = hex.replace("#", "");
+            return [0, 2, 4].map(offset => parseInt(clean.slice(offset, offset + 2), 16));
+        }
+
+        function mixColors(base, tint, amount) {
+            return base.map((channel, index) => Math.round(channel * (1 - amount) + tint[index] * amount));
+        }
+
+        function updateColorPresetSelection() {
+            colorButtons.forEach(button => {
+                const selected = button.dataset.color === colorFilter.value;
+                button.classList.toggle("active", selected);
+                button.setAttribute("aria-pressed", String(selected));
+            });
+        }
+
+        function updateQuickPresetSelection(name = "") {
+            presetButtons.forEach(button => {
+                const selected = button.dataset.preset === name;
+                button.classList.toggle("active", selected);
+                button.setAttribute("aria-pressed", String(selected));
+            });
+        }
+
+        function updateFilterPreview() {
+            const brightness = Number(brightnessSlider.value);
+            const strength = Number(strengthSlider.value);
+            const selectedColor = colorFilter.value;
+            const base = [247, 248, 250];
+            const tint = hexToRgb(filterColors[selectedColor] || filterColors["Sky Blue"]);
+
+            // Blend up to 48% of the chosen filter color, then apply brightness.
+            // Scaling after the blend guarantees that 0% brightness is always black.
+            const tinted = mixColors(base, tint, strength / 100 * 0.48);
+            const dimmed = tinted.map(channel => Math.round(channel * brightness / 100));
+            document.body.style.backgroundColor = `rgb(${dimmed.join(", ")})`;
+
+            brightnessValue.textContent = `${brightness}%`;
+            strengthValue.textContent = `${strength}%`;
+            filterStatus.innerHTML = `Live page tint: <strong>${brightness}% brightness</strong>, ${strength}% filter strength, ${selectedColor} filter.`;
+            updateColorPresetSelection();
+        }
+
+        function markAsCustom() {
+            updateQuickPresetSelection("");
+        }
+
+        brightnessSlider.addEventListener("input", () => {
+            markAsCustom();
+            updateFilterPreview();
+        });
+        strengthSlider.addEventListener("input", () => {
+            markAsCustom();
+            updateFilterPreview();
+        });
+        colorFilter.addEventListener("change", () => {
+            markAsCustom();
+            updateFilterPreview();
+        });
+
+        colorButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                colorFilter.value = button.dataset.color;
+                markAsCustom();
+                updateFilterPreview();
+            });
+        });
+
+        presetButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const preset = quickPresets[button.dataset.preset];
+                if (!preset) return;
+                brightnessSlider.value = preset.brightness;
+                strengthSlider.value = preset.strength;
+                colorFilter.value = preset.color;
+                updateQuickPresetSelection(button.dataset.preset);
+                updateFilterPreview();
+            });
+        });
+
+        updateFilterPreview();
+
         async function fetchLatestRelease() {
             const repo = "r00t-tsai/Filter-Studio";
             const fallbackVersion = "v1.2.0";
